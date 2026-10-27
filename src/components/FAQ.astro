@@ -1,0 +1,71 @@
+---
+// Данные вопросов
+const faqData = [
+  {
+    id: 1,
+    question: "С какого возраста можно собирать?",
+    answer: "От 4 лет. Мелкие детали безопасны, а схема сборки понятна даже дошкольнику. Первые пару раз собирайте вместе — ребёнок быстро освоится."
+  },
+  {
+    id: 2,
+    question: "Нужен ли клей или ножницы?",
+    answer: "Нет! Все детали вставляются друг в друга по принципу пазла. Ножницы и клей не нужны — только фантазия."
+  },
+  {
+    id: 3, 
+    question: "Как долго собирается одна фигурка?",
+    answer: "От 20 минут до 2 часов — зависит от сложности фигурки и возраста ребёнка. Простых зверей можно собрать за вечер, космические корабли — за пару дней."
+  },
+  {
+    id: 4,
+    question: "Можно ли раскрашивать фигурки?",
+    answer: "Конечно! Картон отлично принимает фломастеры, краски и карандаши. Это отдельное удовольствие — создать свой уникальный цвет."
+  },
+  {
+    id: 5,
+    question: "Что делать, если деталь порвалась?",
+    answer: "Напишите нам — пришлём замену. А если повреждение небольшое, можно аккуратно подклеить скотчем. Картон прочный, но дети есть дети!"
+  },
+  {
+    id: 6,
+    question: "Как часто выходят новые фигурки?",
+    answer: "Каждую неделю! Мы выпускаем новую схему сборки — зверей, технику или космос. Подписывайтесь на нас ВКонтакте, чтобы не пропустить."
+  }
+];
+---
+
+<section id="faq" class="py-12 md:py-20 px-6 bg-craft-white">
+  <div class="container mx-auto">
+    <div class="text-center mb-10 md:mb-14">
+      <h2 class="text-3xl md:text-4xl font-fredoka font-bold text-craft-dark mb-4">Вопросы</h2>
+    </div>
+    
+    {/* FAQ аккордеон */}
+    <div class="max-w-3xl mx-auto space-y-4">
+      {faqData.map((item) => (
+        <div key={item.id} class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+          <button class="faq-question w-full flex justify-between items-center p-5 text-left font-bold hover:bg-gray-50 transition-colors duration-300">
+            <span class="text-craft-dark text-lg md:text-xl pr-6">{item.question}</span>
+            <span class="faq-icon text-2xl text-accent-orange flex-shrink-0">+</span>
+          </button>
+          <div class="faq-answer hidden p-5 pt-0">
+            <p class="text-gray-600 leading-relaxed">{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    {/* Кнопка "Написать нам во ВКонтакте" */}
+    <div class="text-center mt-8 md:mt-12">
+      <a 
+        href="#" 
+        class="inline-flex items-center gap-2 text-accent-blue font-bold text-lg hover:underline transition duration-300"
+        onclick="return false;" // Заглушка для предотвращения перехода
+      >
+        Написать нам во ВКонтакте →
+      </a>
+    </div>
+  </div>
+  
+  <script src="/src/scripts/faq.js" defer></script>
+</section>

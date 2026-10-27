@@ -1,0 +1,71 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title = "Конструктор из&nbsp;картона", subtitle = "Собирайте зверей, машины и&nbsp;космические корабли. Без&nbsp;клея и&nbsp;ножниц." } = Astro.props;
+---
+
+<section id="hero" class="bg-craft-white py-12 md:py-20 px-6">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+      <div class="lg:w-1/2">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-fredoka font-bold text-craft-dark mb-6">{title}</h1>
+        <p class="text-xl md:text-2xl text-craft-dark mb-8">{subtitle}</p>
+        
+        <div class="mb-8">
+<button class="bg-accent-orange hover:bg-orange-600 text-white font-semibold py-4 px-8 rounded-xl text-lg md:text-xl transition duration-300 transform hover:scale-105">
+             Выбрать набор — от&nbsp;1&nbsp;000&nbsp;₽
+           </button>
+          <p class="mt-4 text-gray-600 text-sm md:text-base">Доставка СДЭК по России и ЕАЭС</p>
+        </div>
+        
+        <div class="flex flex-col md:flex-row gap-6 md:gap-10 mt-10">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-accent-yellow rounded-full flex items-center justify-center">
+              <span class="text-craft-dark font-bold">4+</span>
+            </div>
+            <div>
+              <p class="font-semibold">От 4 лет</p>
+              <p class="text-sm text-gray-600">Безопасно для детей</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-accent-blue text-craft-white rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold">Без клея</p>
+              <p class="text-sm text-gray-600">Сборка пазла</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-accent-orange text-craft-white rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold">Новые фигурки</p>
+              <p class="text-sm text-gray-600">Каждую неделю</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lg:w-1/2 mt-10 lg:mt-0">
+        <div class="bg-gray-200 rounded-2xl p-8 h-80 md:h-96 flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-4xl mb-4">📦</div>
+            <p class="text-gray-600 font-medium">фото детей за сборкой</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,85 @@
+---
+// Данные фигурок для рендеринга на сервере
+const figures = [
+  { id: 1, name: "Лиса", category: "Звери", set: "Старт", isNew: false },
+  { id: 2, name: "Медведь", category: "Звери", set: "Для всей семьи", isNew: false },
+  { id: 3, name: "Внедорожник", category: "Техника", set: "Старт", isNew: false },
+  { id: 4, name: "Самолёт", category: "Техника", set: "Для всей семьи", isNew: false },
+  { id: 5, name: "Ракета", category: "Космос", set: "На праздник!", isNew: false },
+  { id: 6, name: "Спутник", category: "Космос", set: "На праздник!", isNew: true }
+];
+---
+
+<section id="collection" class="py-12 md:py-20 px-6 bg-craft-white">
+  <div class="container mx-auto">
+    <div class="text-center mb-10 md:mb-14">
+      <h2 class="text-3xl md:text-4xl font-fredoka font-bold text-craft-dark mb-4">Коллекция фигурок</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Собирайте зверей, машины и космические корабли</p>
+    </div>
+    
+    {/* Фильтры */}
+    <div class="flex flex-wrap justify-center gap-3 mb-8 md:mb-12">
+      <button data-filter="all" class="collection-filter px-5 py-2.5 rounded-full bg-accent-orange text-white font-medium transition duration-300 hover:bg-orange-600">Все</button>
+      <button data-filter="Звери" class="collection-filter px-5 py-2.5 rounded-full bg-gray-100 text-craft-dark font-medium transition duration-300 hover:bg-gray-200">Звери</button>
+      <button data-filter="Техника" class="collection-filter px-5 py-2.5 rounded-full bg-gray-100 text-craft-dark font-medium transition duration-300 hover:bg-gray-200">Техника</button>
+      <button data-filter="Космос" class="collection-filter px-5 py-2.5 rounded-full bg-gray-100 text-craft-dark font-medium transition duration-300 hover:bg-gray-200">Космос</button>
+      <button data-filter="novelty" class="collection-filter px-5 py-2.5 rounded-full bg-gray-100 text-craft-dark font-medium transition duration-300 hover:bg-gray-200">Новинка</button>
+    </div>
+    
+    {/* Сетка фигурок */}
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+      {figures.map((figure) => (
+        <div 
+          key={figure.id}
+          data-id={figure.id}
+          data-category={figure.category}
+          data-new={figure.isNew}
+          class="figure-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          <div class="relative">
+            {/* Placeholder для фото */}
+            <div class="bg-gray-200 aspect-square flex items-center justify-center p-4" aria-label={`Фигурка ${figure.name} из картона`}>
+              <div class="text-center">
+                <div class="text-4xl mb-2">🧩</div>
+                <p class="text-gray-500 text-sm">фото фигурки</p>
+              </div>
+            </div>
+            
+            {/* Метка "Новинка" */}
+            {figure.isNew && (
+              <div class="absolute top-3 right-3 bg-accent-yellow text-craft-dark px-3 py-1 rounded-full text-xs font-bold">
+                Новинка
+              </div>
+            )}
+          </div>
+          
+          <div class="p-5">
+            <p class="text-sm text-gray-500 uppercase mb-1">{figure.category}</p>
+            <h3 class="text-xl font-fredoka font-bold text-craft-dark mb-2">{figure.name}</h3>
+            <p class="text-gray-600 mb-4">Собирается из набора «{figure.set}»</p>
+            <a 
+              href="#" 
+              class="inline-block text-accent-blue font-medium hover:underline transition duration-300"
+              onclick="return false;" // Заглушка для предотвращения перехода
+            >
+              Открыть схему →
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    {/* Кнопка "Смотреть все фигурки" */}
+    <div class="text-center">
+      <a 
+        href="#" 
+        class="inline-flex items-center gap-2 text-accent-blue font-bold text-lg hover:underline transition duration-300"
+        onclick="return false;" // Заглушка для предотвращения перехода
+      >
+        Смотреть все фигурки →
+      </a>
+    </div>
+  </div>
+  
+  <script src="/src/scripts/collection.js" defer></script>
+</section>

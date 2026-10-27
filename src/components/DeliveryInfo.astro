@@ -1,0 +1,11 @@
+---
+interface Props {
+  text?: string;
+}
+
+const { text = "Доставка СДЭК по России и ЕАЭС. Оплата при получении." } = Astro.props;
+---
+
+<div class="text-center mt-8">
+  <p class="text-gray-500 text-sm">{text}</p>
+</div>

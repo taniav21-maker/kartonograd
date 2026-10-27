@@ -1,0 +1,15 @@
+---
+// Нет пропсов
+---
+
+<div id="sticky-button" class="fixed bottom-4 left-4 right-4 z-40 hidden md:hidden">
+  <a 
+    href="#catalog" 
+    class="block w-full bg-accent-orange text-white text-center font-bold py-4 px-4 rounded-xl shadow-lg hover:bg-orange-600 transition-colors duration-300 active:scale-[0.98]"
+    onclick="if(document.getElementById('catalog')) document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' }); return false;"
+  >
+    Выбрать набор — от 1 000 ₽
+  </a>
+  
+  <script src="/src/scripts/stickyButton.js" defer></script>
+</div>

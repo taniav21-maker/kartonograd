@@ -1,0 +1,53 @@
+---
+interface Props {
+  id: number;
+  name: string;
+  pieces: number;
+  price: number;
+  recommended?: boolean;
+}
+
+const { id, name, pieces, price, recommended = false } = Astro.props;
+---
+
+<div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 h-full flex flex-col">
+  {recommended && (
+    <div class="bg-accent-blue text-white text-sm font-semibold py-2 px-4 text-center">
+      Рекомендуем
+    </div>
+  )}
+  
+  <div class="p-6 flex-grow flex flex-col">
+    <div class="mb-4">
+      <div 
+        onclick={`openProductModal(${id})`}
+        class="bg-gray-100 rounded-xl h-48 flex items-center justify-center mb-4 cursor-pointer hover:opacity-90 transition duration-300"
+      >
+        <div class="text-center">
+          <div class="text-5xl mb-2">📦</div>
+          <p class="text-gray-400">фото набора</p>
+        </div>
+      </div>
+      
+      <h3 class="text-2xl font-fredoka font-bold text-craft-dark mb-2">{name}</h3>
+      <p class="text-gray-500 text-sm mb-2">{pieces} деталей</p>
+      <p class="text-gray-600 mb-4">
+        {id === 1 ? "Идеально для первого знакомства" : 
+         id === 2 ? "Хватит на несколько вечеров сборки" : 
+         "Для компании детей или подарка"}
+      </p>
+    </div>
+    
+    <div class="mt-auto">
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold text-craft-dark">{price.toLocaleString('ru-RU')} ₽</div>
+        <button 
+          onclick={`addToCart(${id})`}
+          class="bg-accent-orange hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-xl transition duration-300"
+        >
+          В корзину
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

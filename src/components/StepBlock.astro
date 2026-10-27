@@ -1,0 +1,71 @@
+---
+interface Step {
+  number: string;
+  title: string;
+  subtitle: string;
+}
+
+interface Props {
+  steps?: Step[];
+  title?: string;
+}
+
+const { 
+  title = "Это проще, чем кажется",
+  steps = [
+    { number: "01", title: "Откройте коробку", subtitle: "Внутри детали, схемы и инструкция" },
+    { number: "02", title: "Выберите фигурку", subtitle: "Например, лиса или ракета" },
+    { number: "03", title: "Соберите вместе", subtitle: "Детали вставляются без клея" },
+    { number: "04", title: "Раскрасьте", subtitle: "Фломастерами или красками" }
+  ]
+} = Astro.props;
+---
+
+<section class="py-12 md:py-20 px-6 bg-craft-white">
+  <div class="container mx-auto">
+    <h2 class="text-3xl md:text-4xl font-fredoka font-bold text-craft-dark text-center mb-12 md:mb-16">{title}</h2>
+    
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-16">
+      {/* Шаги */}
+      <div class="lg:w-3/5">
+        <div class="space-y-10 md:space-y-12">
+          {steps.map((step, index) => (
+            <div class="flex items-start gap-4 md:gap-6" key={index}>
+              <div class="flex-shrink-0">
+                <div class="text-4xl md:text-5xl lg:text-6xl font-fredoka font-bold text-accent-blue">
+                  {step.number}
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl md:text-2xl font-bold text-craft-dark mb-2">{step.title}</h3>
+                <p class="text-gray-600 md:text-lg">{step.subtitle}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Видео-заглушка */}
+      <div class="lg:w-2/5 mt-10 lg:mt-0">
+        <div class="sticky top-24">
+          <div class="bg-gray-200 aspect-video rounded-2xl overflow-hidden relative flex items-center justify-center" aria-label="Видео демонстрация сборки картонной фигурки">
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-200/80 to-gray-300/60"></div>
+            <button class="relative z-10 group">
+              <div class="w-16 h-16 md:w-20 md:h-20 bg-accent-orange rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-8 h-8 md:w-10 md:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+              <p class="text-center text-gray-600 mt-4 text-sm md:text-base">видео сборки фигурки</p>
+            </button>
+          </div>
+          
+          <div class="mt-6 p-4 bg-gray-50 rounded-xl">
+            <p class="text-craft-dark font-medium mb-2">👀 Посмотрите как это работает</p>
+            <p class="text-sm text-gray-600">Всего 90 секунд и вы поймёте, насколько это просто</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "Что в коробке" } = Astro.props;
+---
+
+<section id="whats-in-box" class="py-12 md:py-20 px-6 bg-craft-white">
+  <div class="container mx-auto">
+    <h2 class="text-3xl md:text-4xl font-fredoka font-bold text-craft-dark text-center mb-10 md:mb-16">{title}</h2>
+    
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+      {/* Левая часть - список с иконками */}
+      <div class="lg:w-2/5">
+        <div class="space-y-8">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-accent-orange" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-craft-dark mb-2">Детали из прочного микрогофрокартона</h3>
+              <p class="text-gray-600">Толстый переплетённый картон, который выдерживает многократную сборку</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-accent-orange" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-craft-dark mb-2">Яркие схемы сборки для каждой фигурки</h3>
+              <p class="text-gray-600">Подробные цветные инструкции с пошаговыми фотографиями, понятные даже ребёнку</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-accent-orange" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-craft-dark mb-2">Инструкция и идеи для раскрашивания</h3>
+              <p class="text-gray-600">Творческое задание с образцами раскрасок и подсказками для создания уникальной фигурки</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Правая часть - фото-заглушки */}
+      <div class="lg:w-3/5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Горизонтальное фото */}
+          <div class="space-y-3">
+            <div class="bg-gray-200 aspect-[4/3] rounded-xl flex flex-col items-center justify-center p-4" aria-label="Открытая коробка с деталями картонного конструктора">
+              <div class="text-5xl mb-3">📦</div>
+              <p class="text-gray-500 text-center text-sm">Фото: открытая коробка с деталями и схемами</p>
+            </div>
+            <p class="text-gray-500 text-xs md:text-sm text-center">Внутри 250+ деталей разных форм и цветных схем коллекции</p>
+          </div>
+          
+          {/* Вертикальное фото */}
+          <div class="space-y-3">
+            <div class="bg-gray-200 aspect-[3/4] rounded-xl flex flex-col items-center justify-center p-4" aria-label="Картонная фигурка в руке ребёнка для понимания размера">
+              <div class="text-5xl mb-3">👶</div>
+              <p class="text-gray-500 text-center text-sm">Фото: фигурка в руке ребёнка</p>
+            </div>
+            <p class="text-gray-500 text-xs md:text-sm text-center">Размер собранной фигурки подходит для детской руки, удобно держать</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

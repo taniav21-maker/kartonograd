@@ -1,0 +1,81 @@
+---
+import DeliveryInfo from './DeliveryInfo.astro';
+
+interface Product {
+  id: number;
+  name: string;
+  details: number;
+  description: string;
+  price: number;
+  recommended: boolean;
+}
+
+const products: Product[] = [
+  { id: 1, name: "Старт", details: 255, description: "Идеально для первого знакомства", price: 1000, recommended: false },
+  { id: 2, name: "Для всей семьи", details: 370, description: "Хватит на несколько вечеров сборки", price: 1490, recommended: true },
+  { id: 3, name: "На праздник!", details: 490, description: "Для компании детей или подарка", price: 1690, recommended: false }
+];
+---
+
+<section id="catalog" class="py-12 md:py-20 px-6 bg-craft-white">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-fredoka font-bold text-craft-dark mb-4">Выберите свой набор</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {products.map(product => (
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 h-full flex flex-col" data-product-id={product.id}>
+          {product.recommended && (
+            <div class="bg-accent-blue text-white text-sm font-semibold py-2 px-4 text-center">
+              Рекомендуем
+            </div>
+          )}
+          
+          <div class="p-6 flex-grow flex flex-col">
+            <div class="mb-4">
+<div 
+              class="open-product-modal bg-gray-100 rounded-xl h-48 flex items-center justify-center mb-4 cursor-pointer hover:opacity-90 transition duration-300"
+              data-id={product.id}
+              aria-label={`Набор ${product.name} — ${product.details} деталей`}
+            >
+              <div class="text-center">
+                <div class="text-5xl mb-2">📦</div>
+                <p class="text-gray-400">фото набора</p>
+              </div>
+            </div>
+              
+              <h3 class="text-2xl font-fredoka font-bold text-craft-dark mb-2">{product.name}</h3>
+              <p class="text-gray-500 text-sm mb-2">{product.details} деталей</p>
+              <p class="text-gray-600 mb-4">{product.description}</p>
+            </div>
+            
+            <div class="mt-auto">
+              <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-craft-dark">{product.price.toLocaleString('ru-RU')} ₽</div>
+                <button 
+                  class="add-to-cart-btn bg-accent-orange hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-xl transition duration-300"
+                  data-id={product.id}
+                  data-name={product.name}
+                  data-price={product.price}
+                >
+                  В корзину
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <DeliveryInfo />
+  </div>
+</section>
+
+<!-- Модальное окно товара -->
+<div id="product-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl p-6 max-w-lg w-full relative">
+    <button class="close-modal absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+    <div id="product-modal-content"><!-- Сюда JS будет вставлять данные товара --></div>
+  </div>
+</div>
